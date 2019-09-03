@@ -5,7 +5,7 @@
   var NxChartData2set = nx.declare('nx.ChartData2set', {
     statics: {
       info: function(inItems) {
-        const result = {};
+        var result = {};
         inItems.forEach(function(item) {
           item.freq = item.freq || 'D';
           result[item.sid] = item;
@@ -13,11 +13,11 @@
         return result;
       },
       data: function(inItems) {
-        const result = {};
+        var result = {};
         inItems.forEach(function(series) {
-          const sid = nx.get(series.meta, 'sid');
-          const columns = nx.get(series.meta, 'columns');
-          const data = { date: series.index };
+          var sid = nx.get(series.meta, 'sid');
+          var columns = nx.get(series.meta, 'columns');
+          var data = { date: series.index };
           columns.forEach(function(c, i) {
             data[c] = series.value[i].map(function(v) {
               return v === 'NaN' ? null : parseFloat(parseFloat(v).toFixed(5));
